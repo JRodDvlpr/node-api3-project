@@ -15,7 +15,7 @@ function validatePostId(req, res, next) {
 
     const id = req.params.id;
   
-    db.getById(id)
+    Posts.getById(id)
     .then(post => {
       if (post) {
         req.post = post;
@@ -47,7 +47,7 @@ function validateUserId(req, res, next) {
     // do your magic!
     const id = req.params.id;
   
-    db.getById(id)
+    Users.getById(id)
     .then(user => {
     if (user) {req.user = user;
         next();
