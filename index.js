@@ -1,5 +1,5 @@
 // code away!
-const server = require('./server')
+const server = require('./server.js')
 
 const PORT = 5000;
 
