@@ -31,7 +31,8 @@ router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
   // do your magic!
   // db.
   const id = req.params.id;
-  postDb.insert({ user_id: id, text: req.body.text })
+
+  postDB.insert({ user_id: id, text: req.body.text })
     .then(post => {res.status(201).json(post);})
     .catch(error => {res.status(500).json({ message: "Could not add post to database." });
     })
@@ -40,7 +41,7 @@ router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
 // ### GET LIST OF ALL USERS ### 
 router.get('/', (req, res) => {
   // do your magic!
-  db.get()
+  userDB.get()
   .then(users => {
     if (users) {res.status(200).json(users);
 
@@ -61,7 +62,7 @@ router.get('/:id', validateUserId, (req, res) => {
 router.get('/:id/posts', validateUserId, (req, res) => {
   // do your magic!
   const id = req.params.id;
-  db.getUserPosts(id)
+  userDB.getUserPosts(id)
   .then(posts => {
     if (posts.length > 0 ) {
     res.status(200).json(posts);
@@ -76,7 +77,7 @@ router.get('/:id/posts', validateUserId, (req, res) => {
 router.delete('/:id', validateUserId, (req, res) => {
   // do your magic!
   const id = req.params.id;
-  db.remove(req.user.id)
+  userDB.remove(req.user.id)
   .then(() => {res.status(200).json({Success: true})})
   .catch(error => {res.status(500).json({error: "Could not delete the specified user." });
   })
@@ -87,7 +88,7 @@ router.put('/:id', validateUserId,validateUser, (req, res) => {
   // do your magic!
   const id = req.params.id;
 
-  db.update(id, {name: req.body.name })
+  userDB.update(id, {name: req.body.name })
   .then(() => {db.getById(id)
   .then(user => {res.status(200).json(user);});})
   .catch(error => {res.status(500).json({errorMessage: "Could not get the updated user "});

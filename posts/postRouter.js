@@ -9,12 +9,11 @@ const postsDB = require('../posts/postDb')
 const cm = require('../middleware/middleware')
 
 // validate post with custom middleware
-const validatePost = cm.validatePost
+// const validatePost = cm.validatePost
 const validatePostid = cm.validatePostId
 
 
 // ### GET list of all POSTS in an array ###
-
 router.get('/', (req, res) => {
   // do your magic!
   postsDB.get()

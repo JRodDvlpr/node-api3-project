@@ -50,7 +50,7 @@ function validateUserId(req, res, next) {
     Users.getById(id)
     .then(user => {
     if (user) {req.user = user;
-        next();
+      next();
   
     } else {res.status(400).json({errorMessage: "Invalid User Id" })}
     })
